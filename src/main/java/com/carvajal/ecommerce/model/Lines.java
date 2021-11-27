@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Entity
 @Table(name="lines")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class lines implements Serializable{
+public class Lines implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
