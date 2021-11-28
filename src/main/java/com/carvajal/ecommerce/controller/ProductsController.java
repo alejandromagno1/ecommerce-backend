@@ -61,6 +61,24 @@ public class ProductsController {
         }
         return response;
     }
+
+    @ApiOperation(value = "Este método se encarga de retornar todos los productos activos deseados por un usuario", response = Products.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully"),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "You are not authorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Internal Server Error")})
+    @GetMapping("/wishes/{idUser}")
+    public GenericResponse getAllWishes(@PathVariable Long idUser) {
+        GenericResponse response = new GenericResponse();
+        try {
+            response.success(_service.getAllWishes(idUser));
+        } catch (CoreException e) {
+            response.failure(e);
+        }
+        return response;
+    }
     
     @ApiOperation(value = "Este método se encarga de retornar el producto consultado", response = Products.class)
     @ApiResponses(value = {

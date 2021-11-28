@@ -14,4 +14,11 @@ public interface IProductsRepository extends JpaRepository<Products, Long> {
         + "WHERE pr.state = true "
         + "ORDER BY pr.id")
     List<Products> getAllActives();
+
+    @Query("SELECT pr "
+        + "FROM Products AS pr "
+        + "INNER JOIN Wishes AS ws ON pr.id = ws.idProduct AND ws.idUser = ?1 "
+        + "WHERE pr.state = true "
+        + "ORDER BY pr.id")
+    List<Products> getAllWishes(Long idUser);
 }

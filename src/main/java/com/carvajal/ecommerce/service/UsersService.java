@@ -1,5 +1,6 @@
 package com.carvajal.ecommerce.service;
 
+import com.carvajal.ecommerce.dto.UsersDTO;
 import com.carvajal.ecommerce.model.Users;
 import com.carvajal.ecommerce.repository.IUsersRepository;
 import com.carvajal.common.ResponseEnum;
@@ -38,6 +39,15 @@ public class UsersService {
     public Users getOne(Long id) throws CoreException{
     	try {
     		return _repository.getById(id);
+        } catch (Exception e){
+            logger.error(msjErrFnd, e);
+            throw new CoreException(ResponseEnum.REQUEST_EXIST);
+        }
+    }
+
+    public UsersDTO login(String user, String passwd) throws CoreException{
+        try {
+            return _repository.login(user, passwd);
         } catch (Exception e){
             logger.error(msjErrFnd, e);
             throw new CoreException(ResponseEnum.REQUEST_EXIST);

@@ -2,6 +2,7 @@ package com.carvajal.ecommerce.service;
 
 import com.carvajal.common.ResponseEnum;
 import com.carvajal.common.error.CoreException;
+import com.carvajal.ecommerce.dto.SalesDTO;
 import com.carvajal.ecommerce.model.Sales;
 import com.carvajal.ecommerce.repository.ISalesRepository;
 import org.slf4j.Logger;
@@ -29,6 +30,15 @@ public class SalesService {
     public List<Sales> getAll() throws CoreException{
     	try {
     		return _repository.findAll();
+        } catch (Exception e){
+            logger.error(msjErrFnd, e);
+            throw new CoreException(ResponseEnum.REQUEST_EXIST);
+        }
+    }
+
+    public List<SalesDTO> getAllshopping(Long idUser) throws CoreException{
+        try {
+            return _repository.getAllshopping(idUser);
         } catch (Exception e){
             logger.error(msjErrFnd, e);
             throw new CoreException(ResponseEnum.REQUEST_EXIST);

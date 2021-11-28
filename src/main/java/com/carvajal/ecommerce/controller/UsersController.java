@@ -61,6 +61,24 @@ public class UsersController {
         return response;
     }
 
+    @ApiOperation(value = "Este método se encarga de retornar el usuario consultado", response = Users.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully"),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "You are not authorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Internal Server Error")})
+    @GetMapping("login/{user}/{passwd}")
+    public GenericResponse login(@PathVariable String user, @PathVariable String passwd) {
+        GenericResponse response = new GenericResponse();
+        try {
+            response.success(_service.login(user, passwd));
+        } catch (CoreException e) {
+            response.failure(e);
+        }
+        return response;
+    }
+
     @ApiOperation(value = "Este método se encarga de crear y/o modificar un usuario", response = Users.class)
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Successfully"),

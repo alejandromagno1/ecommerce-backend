@@ -124,11 +124,11 @@ public class WishesController {
         @ApiResponse(code = 401, message = "You are not authorized"),
         @ApiResponse(code = 404, message = "Not Found"),
         @ApiResponse(code = 500, message = "Internal Server Error")})
-    @DeleteMapping("/{id}")
-    public GenericResponse delete(@PathVariable Long id) {
+    @DeleteMapping("/{idUser}/{idProd}")
+    public GenericResponse delete(@PathVariable Long idUser, @PathVariable Long idProd) {
         GenericResponse response = new GenericResponse();
         try {
-            _service.delete(id);
+            _service.deleteByUsrProd(idUser, idProd);
             response.success();
         } catch (CoreException e) {
             response.failure(e);

@@ -71,9 +71,9 @@ public class WishesService {
         }
     }
     
-    public void delete(Long id) throws CoreException{
+    public void deleteByUsrProd(Long idUser, Long idProd) throws CoreException{
         try {
-            _repository.deleteById(id);
+            _repository.deleteByUsrProd(idUser, idProd);
         } catch (Exception e) {
             logger.error(msjErrDel, e);
             throw new CoreException(ResponseEnum.REQUEST_EXIST);

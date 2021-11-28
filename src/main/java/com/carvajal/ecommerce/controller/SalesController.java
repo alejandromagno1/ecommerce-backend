@@ -42,6 +42,24 @@ public class SalesController {
         }
         return response;
     }
+
+    @ApiOperation(value = "Este método se encarga de retornar todas las compras existentes de un usuario", response = Sales.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully"),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "You are not authorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Internal Server Error")})
+    @GetMapping("/shopping/{idUser}")
+    public GenericResponse getAllshopping(@PathVariable Long idUser) {
+        GenericResponse response = new GenericResponse();
+        try {
+            response.success(_service.getAllshopping(idUser));
+        } catch (CoreException e) {
+            response.failure(e);
+        }
+        return response;
+    }
     
     @ApiOperation(value = "Este método se encarga de retornar la venta consultada", response = Sales.class)
     @ApiResponses(value = {
