@@ -28,13 +28,13 @@ public class Products implements Serializable{
     private String descProd;
 
     @Column(name = "price")
-    private long price;
+    private Long price;
 
     @Column(name = "stock")
-    private long stock;
+    private Long stock;
 
     @Column(name = "minimum")
-    private long minimum;
+    private Long minimum;
 
     @Column(name = "picture")
     private String urlPicture;

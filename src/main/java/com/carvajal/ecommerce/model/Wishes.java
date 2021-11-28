@@ -19,10 +19,10 @@ public class Wishes implements Serializable{
     private Long id;
 
     @Column(name = "id_user")
-    private long idUser;
+    private Long idUser;
 
     @Column(name = "id_product")
-    private long idProduct;
+    private Long idProduct;
 
     @Column(name = "state")
     private Boolean state;
