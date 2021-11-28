@@ -34,6 +34,15 @@ public class ProductsService {
             throw new CoreException(ResponseEnum.REQUEST_EXIST);
         }
     }
+
+    public List<Products> getAllActives() throws CoreException{
+        try {
+            return _repository.getAllActives();
+        } catch (Exception e){
+            logger.error(msjErrFnd, e);
+            throw new CoreException(ResponseEnum.REQUEST_EXIST);
+        }
+    }
         
     public Products getOne(Long id) throws CoreException{
     	try {

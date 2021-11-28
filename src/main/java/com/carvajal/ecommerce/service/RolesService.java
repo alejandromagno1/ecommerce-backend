@@ -34,6 +34,15 @@ public class RolesService {
             throw new CoreException(ResponseEnum.REQUEST_EXIST);
         }
     }
+
+    public List<Roles> getAllActives() throws CoreException{
+        try {
+            return _repository.getAllActives();
+        } catch (Exception e){
+            logger.error(msjErrFnd, e);
+            throw new CoreException(ResponseEnum.REQUEST_EXIST);
+        }
+    }
         
     public Roles getOne(Long id) throws CoreException{
     	try {

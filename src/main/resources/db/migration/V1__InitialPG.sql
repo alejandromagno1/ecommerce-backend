@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS ecommerce.wishes
     id bigserial NOT NULL,
     id_user bigint NOT NULL,
     id_product bigint NOT NULL,
-    state aclitem NOT NULL,
+    state boolean NOT NULL,
     PRIMARY KEY (id)
 );
 

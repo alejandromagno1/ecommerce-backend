@@ -43,6 +43,15 @@ public class WishesService {
             throw new CoreException(ResponseEnum.REQUEST_EXIST);
         }
     }
+
+    public Wishes getWishesByUsrProd(Long idUser, Long idProd) throws CoreException{
+        try {
+            return _repository.getWishesByUsrProd(idUser, idProd);
+        } catch (Exception e){
+            logger.error(msjErrFnd, e);
+            throw new CoreException(ResponseEnum.REQUEST_EXIST);
+        }
+    }
     
     public void save(Wishes data) throws CoreException {
     	try {

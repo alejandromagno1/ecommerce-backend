@@ -2,6 +2,7 @@ package com.carvajal.ecommerce.controller;
 
 import com.carvajal.common.GenericResponse;
 import com.carvajal.common.error.CoreException;
+import com.carvajal.ecommerce.model.Lines;
 import com.carvajal.ecommerce.model.Roles;
 import com.carvajal.ecommerce.service.RolesService;
 import io.swagger.annotations.Api;
@@ -37,6 +38,24 @@ public class RolesController {
         GenericResponse response = new GenericResponse();
         try {
             response.success(_service.getAll());
+        } catch (CoreException e) {
+            response.failure(e);
+        }
+        return response;
+    }
+
+    @ApiOperation(value = "Este método se encarga de retornar todos los roles activos existentes", response = Roles.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully"),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "You are not authorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Internal Server Error")})
+    @GetMapping("/actives")
+    public GenericResponse getAllActives() {
+        GenericResponse response = new GenericResponse();
+        try {
+            response.success(_service.getAllActives());
         } catch (CoreException e) {
             response.failure(e);
         }
