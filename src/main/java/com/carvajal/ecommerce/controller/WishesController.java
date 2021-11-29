@@ -135,4 +135,23 @@ public class WishesController {
         }
         return response;
     }
+
+    @ApiOperation(value = "Este método se encarga de eliminar un deseo de compra.", response = Wishes.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully"),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "You are not authorized"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Internal Server Error")})
+    @DeleteMapping("/{id}")
+    public GenericResponse delete(@PathVariable Long id) {
+        GenericResponse response = new GenericResponse();
+        try {
+            _service.delete(id);
+            response.success();
+        } catch (CoreException e) {
+            response.failure(e);
+        }
+        return response;
+    }
 }

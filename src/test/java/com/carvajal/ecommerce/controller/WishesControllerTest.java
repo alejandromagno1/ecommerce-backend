@@ -123,7 +123,7 @@ class WishesControllerTest {
 
     @Test
     void delete() {
-        GenericResponse response = _controller.delete(1L, 1L);
+        GenericResponse response = _controller.delete(1L);
         Assertions.assertNotNull(response);
     }
 
@@ -131,7 +131,7 @@ class WishesControllerTest {
     void deleteFailed() {
         doThrow(NullPointerException.class).when(_repositoryMock).deleteById(anyLong());
 
-        GenericResponse response = _controller.delete(1L, 1L);
+        GenericResponse response = _controller.delete(1L);
         Assertions.assertEquals(500, response.getErrorCode());
     }
 }

@@ -79,4 +79,13 @@ public class WishesService {
             throw new CoreException(ResponseEnum.REQUEST_EXIST);
         }
     }
+
+    public void delete(Long id) throws CoreException{
+        try {
+            _repository.deleteById(id);
+        } catch (Exception e) {
+            logger.error(msjErrDel, e);
+            throw new CoreException(ResponseEnum.REQUEST_EXIST);
+        }
+    }
 }
