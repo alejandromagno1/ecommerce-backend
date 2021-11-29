@@ -17,7 +17,7 @@ public interface IProductsRepository extends JpaRepository<Products, Long> {
 
     @Query("SELECT pr "
         + "FROM Products AS pr "
-        + "INNER JOIN Wishes AS ws ON pr.id = ws.idProduct AND ws.idUser = ?1 "
+        + "INNER JOIN Wishes AS ws ON ws.state = true AND pr.id = ws.idProduct AND ws.idUser = ?1 "
         + "WHERE pr.state = true "
         + "ORDER BY pr.id")
     List<Products> getAllWishes(Long idUser);

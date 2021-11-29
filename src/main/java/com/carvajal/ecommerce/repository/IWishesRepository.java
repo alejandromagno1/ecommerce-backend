@@ -15,6 +15,7 @@ public interface IWishesRepository extends JpaRepository<Wishes, Long> {
         + "FROM Wishes AS ws "
         + "WHERE ws.idUser = ?1 "
         + "AND ws.idProduct = ?2 "
+        + "AND ws.state = true "
         + "ORDER BY ws.id")
     Wishes getWishesByUsrProd(Long idUser, Long idProd);
 
